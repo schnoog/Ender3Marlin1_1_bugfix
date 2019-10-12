@@ -1,0 +1,15 @@
+Von 
+https://www.devroom.io/2009/10/26/how-to-create-and-apply-a-patch-with-git/
+
+
+Create patch of current repo vs. master
+git format-patch master --stdout > fix_empty_poster.patch
+
+Inspect patch
+git apply --stat fix_empty_poster.patch
+
+Test patch (in master f.e.)
+git apply --check fix_empty_poster.patch
+
+Apply patch
+git am --signoff < fix_empty_poster.patch

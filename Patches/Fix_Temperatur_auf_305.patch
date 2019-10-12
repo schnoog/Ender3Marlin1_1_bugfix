@@ -1,0 +1,25 @@
+From 024f4e1b3b8f77c898e5c47e116b3ee6751020f8 Mon Sep 17 00:00:00 2001
+From: schnoog <braun.volker@gmail.com>
+Date: Sat, 12 Oct 2019 08:56:16 +0200
+Subject: [PATCH] Temperatur auf 305 (290) fuer FullMetallHotend
+
+---
+ Marlin/Configuration.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Marlin/Configuration.h b/Marlin/Configuration.h
+index fd3623a..56e758b 100644
+--- a/Marlin/Configuration.h
++++ b/Marlin/Configuration.h
+@@ -343,7 +343,7 @@
+ // When temperature exceeds max temp, your heater will be switched off.
+ // This feature exists to protect your hotend from overheating accidentally, but *NOT* from thermistor short/failure!
+ // You should use MINTEMP for thermistor short/failure protection.
+-#define HEATER_0_MAXTEMP 275
++#define HEATER_0_MAXTEMP 305
+ #define HEATER_1_MAXTEMP 275
+ #define HEATER_2_MAXTEMP 275
+ #define HEATER_3_MAXTEMP 275
+-- 
+2.14.2.windows.1
+
