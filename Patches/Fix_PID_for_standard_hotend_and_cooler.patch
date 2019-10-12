@@ -1,0 +1,33 @@
+From 5ab38fd6c0f20390d180604064c01ab15ce874f2 Mon Sep 17 00:00:00 2001
+From: schnoog <braun.volker@gmail.com>
+Date: Sat, 12 Oct 2019 10:37:37 +0200
+Subject: [PATCH] PID for standard hotend-cooler
+
+---
+ Marlin/Configuration.h | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/Marlin/Configuration.h b/Marlin/Configuration.h
+index fd3623a..942fe2c 100644
+--- a/Marlin/Configuration.h
++++ b/Marlin/Configuration.h
+@@ -372,10 +372,12 @@
+ 
+   // If you are using a pre-configured hotend then you can use one of the value sets by uncommenting it
+   // Creality Ender-3
+-  #define DEFAULT_Kp 21.73
+-  #define DEFAULT_Ki 1.54
+-  #define DEFAULT_Kd 76.55
+-
++ // #define DEFAULT_Kp 21.73
++ // #define DEFAULT_Ki 1.54
++ // #define DEFAULT_Kd 76.55
++  #define DEFAULT_Kp 21.98
++  #define DEFAULT_Ki 1.88
++  #define DEFAULT_Kd 64.36
+   // Ultimaker
+   //#define DEFAULT_Kp 22.2
+   //#define DEFAULT_Ki 1.08
+-- 
+2.14.2.windows.1
+
