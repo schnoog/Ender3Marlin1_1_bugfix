@@ -1,0 +1,145 @@
+From 530d1575ce7f450e0d4a2f737e02bd33bb65bad4 Mon Sep 17 00:00:00 2001
+From: schnoog <braun.volker@gmail.com>
+Date: Sat, 12 Oct 2019 09:28:14 +0200
+Subject: [PATCH] BLtouch configured acc
+ https://www.youtube.com/watch?v=sUlqrSq6LeY
+
+---
+ Marlin/Configuration.h     | 26 +++++++++++++-------------
+ Marlin/Configuration_adv.h |  6 +++---
+ 2 files changed, 16 insertions(+), 16 deletions(-)
+
+diff --git a/Marlin/Configuration.h b/Marlin/Configuration.h
+index fd3623a..6b52613 100644
+--- a/Marlin/Configuration.h
++++ b/Marlin/Configuration.h
+@@ -75,7 +75,7 @@
+ // startup. Implementation of an idea by Prof Braino to inform user that any changes made to this
+ // build by the user have been successfully uploaded into firmware.
+ #define STRING_CONFIG_H_AUTHOR "(thisiskeithb, Ender-3)" // Who made the changes.
+-#define SHOW_BOOTSCREEN
++//#define SHOW_BOOTSCREEN
+ #define STRING_SPLASH_LINE1 SHORT_BUILD_VERSION // will be shown during bootup in line 1
+ #define STRING_SPLASH_LINE2 WEBSITE_URL         // will be shown during bootup in line 2
+ 
+@@ -521,7 +521,7 @@
+   //#define ENDSTOPPULLUP_XMIN
+   //#define ENDSTOPPULLUP_YMIN
+   //#define ENDSTOPPULLUP_ZMIN
+-  //#define ENDSTOPPULLUP_ZMIN_PROBE
++  #define ENDSTOPPULLUP_ZMIN_PROBE
+ #endif
+ 
+ // Mechanical endstop with COM to ground and NC to Signal uses "false" here (most common setup).
+@@ -531,7 +531,7 @@
+ #define X_MAX_ENDSTOP_INVERTING false // set to true to invert the logic of the endstop.
+ #define Y_MAX_ENDSTOP_INVERTING false // set to true to invert the logic of the endstop.
+ #define Z_MAX_ENDSTOP_INVERTING false // set to true to invert the logic of the endstop.
+-#define Z_MIN_PROBE_ENDSTOP_INVERTING false // set to true to invert the logic of the probe.
++#define Z_MIN_PROBE_ENDSTOP_INVERTING true // set to true to invert the logic of the probe.
+ 
+ /**
+  * Stepper Drivers
+@@ -724,8 +724,8 @@
+ /**
+  * The BLTouch probe uses a Hall effect sensor and emulates a servo.
+  */
+-//#define BLTOUCH
+-
++#define BLTOUCH
++#define SERVO0_PIN 27
+ 
+ /**
+  * Enable one or more of the following if probing seems unreliable.
+@@ -771,8 +771,8 @@
+  *      O-- FRONT --+
+  *    (0,0)
+  */
+-#define X_PROBE_OFFSET_FROM_EXTRUDER 10  // X offset: -left  +right  [of the nozzle]
+-#define Y_PROBE_OFFSET_FROM_EXTRUDER 10  // Y offset: -front +behind [the nozzle]
++#define X_PROBE_OFFSET_FROM_EXTRUDER -48  // X offset: -left  +right  [of the nozzle]
++#define Y_PROBE_OFFSET_FROM_EXTRUDER -10  // Y offset: -front +behind [the nozzle]
+ #define Z_PROBE_OFFSET_FROM_EXTRUDER 0   // Z offset: -below +above  [the nozzle]
+ 
+ // Certain types of probes need to stay away from edges
+@@ -899,7 +899,7 @@
+ #if ENABLED(MIN_SOFTWARE_ENDSTOPS)
+   #define MIN_SOFTWARE_ENDSTOP_X
+   #define MIN_SOFTWARE_ENDSTOP_Y
+-  #define MIN_SOFTWARE_ENDSTOP_Z
++  //#define MIN_SOFTWARE_ENDSTOP_Z
+ #endif
+ 
+ // Max software endstops constrain movement within maximum coordinate bounds
+@@ -970,7 +970,7 @@
+  */
+ //#define AUTO_BED_LEVELING_3POINT
+ //#define AUTO_BED_LEVELING_LINEAR
+-//#define AUTO_BED_LEVELING_BILINEAR
++#define AUTO_BED_LEVELING_BILINEAR
+ //#define AUTO_BED_LEVELING_UBL
+ //#define MESH_BED_LEVELING
+ 
+@@ -1137,7 +1137,7 @@
+ // - Move the Z probe (or nozzle) to a defined XY point before Z Homing when homing all axes (G28).
+ // - Prevent Z homing when the Z probe is outside bed area.
+ //
+-//#define Z_SAFE_HOMING
++#define Z_SAFE_HOMING
+ 
+ #if ENABLED(Z_SAFE_HOMING)
+   #define Z_SAFE_HOMING_X_POINT ((X_BED_SIZE) / 2)    // X point for Z homing when homing all axes (G28).
+@@ -1220,7 +1220,7 @@
+ // M502 - reverts to the default "factory settings".  You still need to store them in EEPROM afterwards if you want to.
+ //
+ #define EEPROM_SETTINGS // Enable for M500 and M501 commands
+-//#define DISABLE_M503    // Saves ~2700 bytes of PROGMEM. Disable for release!
++#define DISABLE_M503    // Saves ~2700 bytes of PROGMEM. Disable for release!
+ #define EEPROM_CHITCHAT   // Give feedback on EEPROM commands. Disable to save PROGMEM.
+ 
+ //
+@@ -1448,7 +1448,7 @@
+  * just remove some extraneous menu items to recover space.
+  */
+ //#define NO_LCD_MENUS
+-//#define SLIM_LCD_MENUS
++#define SLIM_LCD_MENUS
+ 
+ //
+ // ENCODER SETTINGS
+@@ -1502,7 +1502,7 @@
+ // If you have a speaker that can produce tones, enable it here.
+ // By default Marlin assumes you have a buzzer with a fixed frequency.
+ //
+-#define SPEAKER
++//#define SPEAKER
+ 
+ //
+ // The duration and frequency for the UI feedback sound.
+diff --git a/Marlin/Configuration_adv.h b/Marlin/Configuration_adv.h
+index d5c2273..6a357cf 100644
+--- a/Marlin/Configuration_adv.h
++++ b/Marlin/Configuration_adv.h
+@@ -807,8 +807,8 @@
+ #if ENABLED(BABYSTEPPING)
+   //#define BABYSTEP_XY              // Also enable X/Y Babystepping. Not supported on DELTA!
+   #define BABYSTEP_INVERT_Z false    // Change if Z babysteps should go the other way
+-  #define BABYSTEP_MULTIPLICATOR 1   // Babysteps are very small. Increase for faster motion.
+-  //#define BABYSTEP_ZPROBE_OFFSET   // Enable to combine M851 and Babystepping
++  #define BABYSTEP_MULTIPLICATOR 10   // Babysteps are very small. Increase for faster motion.
++  #define BABYSTEP_ZPROBE_OFFSET   // Enable to combine M851 and Babystepping
+   #define DOUBLECLICK_FOR_Z_BABYSTEPPING // Double-click on the Status Screen for Z Babystepping.
+   #define DOUBLECLICK_MAX_INTERVAL 1250 // Maximum interval between clicks, in milliseconds.
+                                         // Note: Extra time may be added to mitigate controller latency.
+@@ -854,7 +854,7 @@
+ //
+ // G2/G3 Arc Support
+ //
+-#define ARC_SUPPORT               // Disable this feature to save ~3226 bytes
++//#define ARC_SUPPORT               // Disable this feature to save ~3226 bytes
+ #if ENABLED(ARC_SUPPORT)
+   #define MM_PER_ARC_SEGMENT  1   // Length of each arc segment
+   #define N_ARC_CORRECTION   25   // Number of intertpolated segments between corrections
+-- 
+2.14.2.windows.1
+
