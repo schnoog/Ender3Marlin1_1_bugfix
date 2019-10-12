@@ -1,5 +1,8 @@
 # Marlin 3D Printer Firmware
 
+## Ender 3 configuration by Schnoog
+### Bugfix checkout date 11.10.2019 
+
 [![Build Status](https://travis-ci.org/MarlinFirmware/Marlin.svg?branch=RCBugFix)](https://travis-ci.org/MarlinFirmware/Marlin)
 [![Coverity Scan Build Status](https://scan.coverity.com/projects/2224/badge.svg)](https://scan.coverity.com/projects/2224)
 
